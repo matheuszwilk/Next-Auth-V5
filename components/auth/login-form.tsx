@@ -11,8 +11,11 @@ import {
   FormMessage,
 } from '@/components/ui/form'
 import * as z from 'zod'
-import { LoginSchema } from '@/schemas'
+import { LoginSchema } from '@/schemas/index'
 import { Input } from '@/components/ui/input'
+import { Button } from '@/components/ui/button'
+import { FormError } from '@/components/form-error'
+import { FormSuccess } from '@/components/form-success'
 
 export const LoginForm = () => {
   const form = useForm<z.infer<typeof LoginSchema>>({
@@ -22,6 +25,11 @@ export const LoginForm = () => {
       password: '',
     },
   })
+
+  const onSubmit = (values: z.infer<typeof LoginSchema>) => {
+    console.log(values)
+  }
+
   return (
     <CardWrapper
       headerlabel="Welcome Back"
@@ -30,8 +38,8 @@ export const LoginForm = () => {
       showSocial={true}
     >
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(() => {})} className="space-y-6">
-          <div className="space-y-4">
+        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+          <div className="space-y-2">
             <FormField
               control={form.control}
               name="email"
@@ -42,7 +50,7 @@ export const LoginForm = () => {
                     <Input
                       type="email"
                       {...field}
-                      placeholder="matheus.pereira@lge.com"
+                      placeholder="exemple@lge.com"
                       typeof="email"
                     />
                   </FormControl>
@@ -50,7 +58,30 @@ export const LoginForm = () => {
                 </FormItem>
               )}
             />
+            <FormField
+              control={form.control}
+              name="password"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Password</FormLabel>
+                  <FormControl>
+                    <Input
+                      type="password"
+                      {...field}
+                      placeholder="******"
+                      typeof="password"
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
           </div>
+          {/* <FormError message="Invalid email or password" />
+          <FormSuccess message="You are logged in" /> */}
+          <Button className="w-full" typeof="submit">
+            Sing in
+          </Button>
         </form>
       </Form>
     </CardWrapper>

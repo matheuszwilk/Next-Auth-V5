@@ -3,7 +3,7 @@ import React from 'react'
 const LoginPage = () => {
   return (
     <div className="grid grid-cols-2 h-full w-full">
-      <div className="w-full flex flex-col gap-y-4 items-center justify-center">
+      <div className="w-full flex flex-col items-center justify-center">
         <LoginForm />
       </div>
       <div className="w-full flex flex-col gap-y-4 items-center justify-center text-center bg-black">
