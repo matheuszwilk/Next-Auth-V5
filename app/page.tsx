@@ -1,6 +1,7 @@
 import { Button } from '@/components/ui/button'
 import { Roboto } from 'next/font/google'
 import { cn } from '@/lib/utils'
+import { LoginButton } from '@/components/auth/login-button'
 
 const font = Roboto({ subsets: ['latin'], weight: ['500'] })
 
@@ -18,9 +19,11 @@ export default function Home() {
         </h1>
         <p className="text-lg text-white">A Simple Authetication Service</p>
       </div>
-      <Button variant={'secondary'} className="mt-6" size={'lg'}>
-        Get Started
-      </Button>
+      <LoginButton>
+        <Button variant={'secondary'} className="mt-6" size={'lg'}>
+          Get Started
+        </Button>
+      </LoginButton>
     </main>
   )
 }
