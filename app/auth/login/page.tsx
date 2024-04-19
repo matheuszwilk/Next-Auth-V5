@@ -1,3 +1,4 @@
+import { GlobeDemo } from '@/components/auth/globe-form'
 import { LoginForm } from '@/components/auth/login-form'
 import React from 'react'
 const LoginPage = () => {
@@ -8,7 +9,7 @@ const LoginPage = () => {
       </div>
       <div className="w-full flex flex-col gap-y-4 items-center justify-center text-center bg-black">
         <h1 className="text-white flex flex-col gap-y-4 items-center justify-center text-center">
-          CENTRAL GLOBE
+          <GlobeDemo />
         </h1>
       </div>
     </div>

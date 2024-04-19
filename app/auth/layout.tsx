@@ -1,10 +1,20 @@
 import React from 'react'
+import '../globals.css'
+import { ThemeProvider } from '@/components/theme-provider'
 
 const AuthLayout = ({ children }: { children: React.ReactNode }) => {
   return (
-    <div className="h-screen flex items-center justify-center bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-slate-500 to-slate-800">
-      {children}
-    </div>
+    <ThemeProvider
+      defaultTheme="light"
+      themes={['dark', 'custom', 'light']}
+      attribute="class"
+      enableSystem
+      disableTransitionOnChange
+    >
+      <div className="h-screen flex items-center justify-center ">
+        {children}
+      </div>
+    </ThemeProvider>
   )
 }
 
