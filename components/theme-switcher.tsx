@@ -10,13 +10,13 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
-import { CheckIcon, Palette } from 'lucide-react'
+import { CheckIcon, Paintbrush2 } from 'lucide-react'
 
 export function ThemeSwitcher() {
   const { setTheme, theme } = useTheme()
 
   const isActive = (themeName: string) => {
-    return theme === themeName && <CheckIcon className="ml-2 h-4 w-4" />
+    return theme === themeName && <CheckIcon className="ml-2 h-2 w-2" />
   }
   return (
     <DropdownMenu>
@@ -24,9 +24,9 @@ export function ThemeSwitcher() {
         <Button
           variant="outline"
           size="icon"
-          className="rounded-full p-0 bg-foreground hover:bg-muted text-background hover:text-muted-foreground border-0 outline-none"
+          className="rounded-full p-0 bg-foreground hover:bg-muted text-background hover:text-muted-foreground border-0 outline-none w-8 h-8"
         >
-          <Palette className="w-6 h-6" />
+          <Paintbrush2 className="w-5 h-5" />
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" className="z-[99998]">

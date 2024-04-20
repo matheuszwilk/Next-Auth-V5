@@ -18,6 +18,7 @@ import { Button } from '@/components/ui/button'
 import { FormError } from '@/components/form-error'
 import { FormSuccess } from '@/components/form-success'
 import { login } from '@/actions/login'
+import { Separator } from '../ui/separator'
 
 export const LoginForm = () => {
   const [error, setError] = useState<string | undefined>('')
@@ -46,14 +47,18 @@ export const LoginForm = () => {
 
   return (
     <CardWrapper
-      headerlabel="Welcome Back"
-      backButtonLabel="Dont have an account?"
+      headerlabelMain="Sign In"
+      headerlabel="Enter your email below to login to your account"
+      backButtonLabel="Don't have an account? Sign up"
       backButtonHref="/auth/register"
       showSocial={true}
     >
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-          <div className="space-y-4">
+        <form
+          onSubmit={form.handleSubmit(onSubmit)}
+          className="space-y-4 w-full"
+        >
+          <div className="space-y-4 w-full">
             <FormField
               control={form.control}
               name="email"

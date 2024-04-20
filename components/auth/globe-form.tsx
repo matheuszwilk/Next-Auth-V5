@@ -1,19 +1,19 @@
 'use client'
-import React from 'react'
 import { motion } from 'framer-motion'
 import dynamic from 'next/dynamic'
+import React, { useState, useEffect } from 'react'
 
 const World = dynamic(() => import('../ui/globe').then((m) => m.World), {
   ssr: false,
 })
 
-export function GlobeDemo() {
+export function GlobeLogin() {
   const globeConfig = {
     pointSize: 4,
-    globeColor: '#062056',
-    showAtmosphere: false,
+    globeColor: '#a50034',
+    showAtmosphere: true,
     atmosphereColor: '#FFFFFF',
-    atmosphereAltitude: 0.1,
+    atmosphereAltitude: 0.085,
     emissive: '#062056',
     emissiveIntensity: 0.1,
     shininess: 0.9,
@@ -22,15 +22,16 @@ export function GlobeDemo() {
     directionalLeftLight: '#ffffff',
     directionalTopLight: '#ffffff',
     pointLight: '#ffffff',
-    arcTime: 1000,
-    arcLength: 0.9,
+    arcTime: 1500,
+    arcLength: 2.2,
     rings: 1,
     maxRings: 3,
     initialPosition: { lat: 22.3193, lng: 114.1694 },
     autoRotate: true,
     autoRotateSpeed: 0.3,
   }
-  const colors = ['#06b6d4', '#3b82f6', '#6366f1']
+
+  const colors = ['#333132', '#be3c65', '#000000']
   const sampleArcs = [
     {
       order: 1,
@@ -394,9 +395,22 @@ export function GlobeDemo() {
     },
   ]
 
+  const [isLoading, setIsLoading] = useState(true)
+
+  useEffect(() => {
+    setIsLoading(true) // Set loading state to true initially
+
+    // Simulate a loading delay until the component is ready to appear
+    const timer = setTimeout(() => {
+      setIsLoading(false) // Set loading state to false after delay
+    }, 2000)
+
+    return () => clearTimeout(timer)
+  }, [])
+
   return (
-    <div className="flex flex-row items-center justify-center h-full w-full mb-10">
-      <div className="max-w-7xl mx-auto w-full relative overflow-hidden h-full md:h-[30rem] px-4">
+    <div className="flex flex-col items-center justify-center h-full w-full">
+      <div className="max-w-7xl mx-auto w-full overflow-hidden h-full md:h-[40rem] px-4">
         <motion.div
           initial={{
             opacity: 0,
@@ -411,17 +425,16 @@ export function GlobeDemo() {
           }}
           className="div"
         >
-          <h2 className="text-center text-xl md:text-4xl font-bold text-black dark:text-white">
-            We sell soap worldwide
-          </h2>
-          <p className="text-center text-base md:text-lg font-normal text-neutral-700 dark:text-neutral-200 max-w-md mt-2 mx-auto">
-            This globe is interactive and customizable. Have fun with it, and
-            don&apos;t forget to share it. :)
+          <h1 className="text-center lg:text-4xl text-6xl font-bold text-foreground">
+            F6 Develop Experience
+          </h1>
+          <p className="text-center text-base md:text-lg font-normal text-neutral-500 dark:text-neutral-300 max-w-md mt-2 mx-auto">
+            Enhance your Develop Experience with cutting-edge technologies and
+            innovative solutions.
           </p>
         </motion.div>
-        {/* <div className="absolute w-full bottom-0 inset-x-0 h-40 bg-gradient-to-b pointer-events-none select-none from-transparent dark:to-black to-white z-40" /> */}
-        <div className="absolute w-full h-full mb-12">
-          <World data={sampleArcs} globeConfig={globeConfig} />;
+        <div className="flex flex-col items-center justify-center w-full h-5/6 mt-2 mb-12">
+          <World data={sampleArcs} globeConfig={globeConfig} key="world" />
         </div>
       </div>
     </div>
