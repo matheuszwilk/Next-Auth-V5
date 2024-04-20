@@ -17,7 +17,7 @@ import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
 import { FormError } from '@/components/form-error'
 import { FormSuccess } from '@/components/form-success'
-import { login } from '@/actions/login'
+import { register } from '@/actions/register'
 
 export const RegisterForm = () => {
   const [error, setError] = useState<string | undefined>('')
@@ -38,7 +38,7 @@ export const RegisterForm = () => {
     setSuccess('')
 
     startTransition(() => {
-      login(values).then((data) => {
+      register(values).then((data) => {
         setError(data.error)
         setSuccess(data.success)
       })
@@ -116,7 +116,7 @@ export const RegisterForm = () => {
           <FormError message={error} />
           <FormSuccess message={success} />
           <Button className="w-full" typeof="submit" disabled={isPending}>
-            Sing in
+            Register
           </Button>
         </form>
       </Form>
