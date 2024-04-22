@@ -1,8 +1,10 @@
 'use client'
 import { CardWrapper } from '@/components/auth/card-wrapper'
-import { useState, useTransition } from 'react'
 import { useForm } from 'react-hook-form'
+import { useSearchParams } from 'next/navigation'
+import { useState, useTransition } from 'react'
 import { zodResolver } from '@hookform/resolvers/zod'
+
 import {
   Form,
   FormControl,
@@ -18,9 +20,14 @@ import { Button } from '@/components/ui/button'
 import { FormError } from '@/components/form-error'
 import { FormSuccess } from '@/components/form-success'
 import { login } from '@/actions/login'
-import { Separator } from '../ui/separator'
 
 export const LoginForm = () => {
+  const searchParams = useSearchParams()
+  const urlError =
+    searchParams.get('error') === 'OAuthAccountNotLinked'
+      ? 'Email already in use with different provider'
+      : ''
+
   const [error, setError] = useState<string | undefined>('')
   const [success, setSuccess] = useState<string | undefined>('')
   const [isPending, startTransition] = useTransition()
@@ -39,8 +46,9 @@ export const LoginForm = () => {
 
     startTransition(() => {
       login(values).then((data) => {
-        setError(data.error)
-        setSuccess(data.success)
+        setError(data?.error)
+        //TODO: add when we add 2FA
+        // setSuccess(data2?.success)
       })
     })
   }
@@ -51,7 +59,7 @@ export const LoginForm = () => {
       headerlabel="Enter your email below to login to your account"
       backButtonLabel="Don't have an account? Sign up"
       backButtonHref="/auth/register"
-      showSocial={false}
+      showSocial={true}
     >
       <Form {...form}>
         <form
@@ -98,10 +106,10 @@ export const LoginForm = () => {
               )}
             />
           </div>
-          <FormError message={error} />
+          <FormError message={error || urlError} />
           <FormSuccess message={success} />
           <Button className="w-full" typeof="submit" disabled={isPending}>
-            Sing in
+            {isPending ? 'Sign In...' : 'Login'}
           </Button>
         </form>
       </Form>
