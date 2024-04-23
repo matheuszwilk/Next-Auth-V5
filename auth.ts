@@ -1,10 +1,9 @@
 import NextAuth from 'next-auth'
 import { PrismaAdapter } from '@auth/prisma-adapter'
 import authConfig from '@/auth.config'
-import { db } from './lib/db'
-import { getUserById } from '@/actions/repository/get-user-by-id'
+import { db } from '@/lib/db'
 import { UserRole } from '@prisma/client'
-import { date } from 'zod'
+import { getUserById } from '@/actions/repository/get-user-by-id'
 
 export const { handlers, auth, signIn, signOut } = NextAuth({
   pages: {
@@ -20,15 +19,19 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
     },
   },
   callbacks: {
-    // async signIn({ user }) {
-    //   const existingUser = await getUserById(user.id)
+    async signIn({ user, account }) {
+      // Allow OAuth without email verification
+      if (account?.provider !== 'credentials') return true
 
-    //   if (!existingUser || !existingUser.emailVerified) {
-    //     return false
-    //   }
+      // TODO: Checar esse codigo
+      const existingUser = user?.id ? await getUserById(user.id) : null
 
-    //   return true
-    // },
+      if (!existingUser?.emailVerified) return false
+
+      // TODO: Add 2FA Check
+
+      return true
+    },
 
     async session({ token, session }) {
       if (token.sub && session.user) {

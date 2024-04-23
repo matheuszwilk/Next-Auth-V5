@@ -47,8 +47,7 @@ export const LoginForm = () => {
     startTransition(() => {
       login(values).then((data) => {
         setError(data?.error)
-        //TODO: add when we add 2FA
-        // setSuccess(data2?.success)
+        setSuccess(data?.success)
       })
     })
   }
@@ -109,7 +108,7 @@ export const LoginForm = () => {
           <FormError message={error || urlError} />
           <FormSuccess message={success} />
           <Button className="w-full" typeof="submit" disabled={isPending}>
-            {isPending ? 'Sign In...' : 'Login'}
+            {isPending ? 'Login..' : 'Login'}
           </Button>
         </form>
       </Form>

@@ -14,7 +14,7 @@ export const ErrorCard = () => {
       showSocial={false}
     >
       <div className="flex justify-center w-full items-center ">
-        <ExclamationTriangleIcon className="text-destructive h-10 w-10" />
+        <ExclamationTriangleIcon className="text-[#a50034] h-10 w-10" />
       </div>
     </CardWrapper>
   )

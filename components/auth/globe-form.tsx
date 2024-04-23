@@ -1,6 +1,7 @@
 'use client'
 import { motion } from 'framer-motion'
 import dynamic from 'next/dynamic'
+import Image from 'next/image'
 import React, { useState, useEffect } from 'react'
 
 const World = dynamic(() => import('../ui/globe').then((m) => m.World), {
@@ -425,7 +426,7 @@ export function GlobeLogin() {
           }}
           className="div"
         >
-          <h1 className="text-center lg:text-4xl text-6xl font-bold text-foreground">
+          <h1 className="text-center lg:text-4xl text-6xl font-bold text-foreground mt-6">
             F6 Develop Experience
           </h1>
           <p className="text-center text-base md:text-lg font-normal text-neutral-500 dark:text-neutral-300 max-w-md mt-2 mx-auto">
@@ -435,6 +436,63 @@ export function GlobeLogin() {
         </motion.div>
         <div className="flex flex-col items-center justify-center w-full h-5/6 mt-2 mb-12">
           <World data={sampleArcs} globeConfig={globeConfig} key="world" />
+          <motion.div
+            initial={{
+              opacity: 0,
+              y: 20,
+            }}
+            animate={{
+              opacity: 10,
+              y: 0,
+            }}
+            transition={{
+              duration: 1,
+            }}
+            className="div"
+          >
+            <Image
+              src="/LG_REINVENT_09.png"
+              alt="Image"
+              width="300"
+              height="300"
+              className="position-absolute home-footer-rotate lg:block hidden"
+              style={{
+                position: 'absolute',
+                left: '30%',
+                top: '-5%',
+                transform: 'rotate(-10deg)',
+              }}
+              // Add the following line to hide the image on smaller screens
+            />
+            <Image
+              src="/footer-star.png"
+              alt="Image"
+              width="50"
+              height="50"
+              className="position-absolute home-footer-rotate lg:block hidden transation-slow animate-pulse"
+              style={{
+                position: 'absolute',
+                left: '6%',
+                top: '40%',
+                transform: 'rotate(-10deg)',
+              }}
+              // Add the following line to hide the image on smaller screens
+            />
+            <Image
+              src="/footer-diamond.png"
+              alt="Image"
+              width="50"
+              height="50"
+              className="position-absolute home-footer-rotate lg:block hidden transation-slow animate-pulse"
+              style={{
+                position: 'absolute',
+                left: '40%',
+                top: '80%',
+                transform: 'rotate(-10deg)',
+              }}
+              // Add the following line to hide the image on smaller screens
+            />
+          </motion.div>
         </div>
       </div>
     </div>
