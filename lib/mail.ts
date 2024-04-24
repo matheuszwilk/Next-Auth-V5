@@ -1,7 +1,7 @@
 import nodemailer from 'nodemailer'
 
 export const sendVerificationEmail = async (email: string, token: string) => {
-  const confirmLink = `http://localhost:3000/verify-email?token=${token}`
+  const confirmLink = `http://localhost:3000/auth/verify-email?token=${token}`
 
   let transporter = nodemailer.createTransport({
     host: process.env.RESEND_KEY,

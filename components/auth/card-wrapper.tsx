@@ -4,7 +4,7 @@ import { Card, CardContent, CardFooter, CardHeader } from '@/components/ui/card'
 import { Header } from '@/components/auth/header'
 import { Social } from '@/components/auth/social'
 import { BackButton } from '@/components/auth/back-button'
-import { ThemeSwitcher } from '../theme-switcher'
+import { ThemeSwitcher } from '@/components/theme-switcher'
 import Image from 'next/image'
 
 interface CardWrapperProps {
@@ -32,10 +32,10 @@ export const CardWrapper = ({
             <ThemeSwitcher />
           </div>
           <Image
-            src="/logo.png"
+            src="/LGE_Logo_HeritageRed_Grey_RGB.png"
             alt="Image"
-            width="55"
-            height="55"
+            width="155"
+            height="155"
             className="mb-4"
           />
         </div>
