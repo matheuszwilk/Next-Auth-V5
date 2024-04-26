@@ -105,7 +105,7 @@ export const LoginForm = () => {
                     variant="link"
                     size="sm"
                     asChild
-                    className="px-0 font-normal"
+                    className="px-0 font-normal text-foreground"
                   >
                     <Link href="/auth/forgot-password">Forgot password?</Link>
                   </Button>

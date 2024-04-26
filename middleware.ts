@@ -6,7 +6,6 @@ import {
   authRoutes,
   publicRoutes,
 } from '@/routes'
-import { error } from 'console'
 
 export const { auth } = NextAuth(authConfig)
 

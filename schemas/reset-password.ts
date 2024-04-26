@@ -6,7 +6,7 @@ export const ResetPasswordSchema = z.object({
       required_error: 'Password is required.',
     })
     .trim()
-    .min(1, {
-      message: 'Please provide a valid password.',
+    .min(6, {
+      message: 'Minimum 6 characters required.',
     }),
 })

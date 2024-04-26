@@ -1,5 +1,5 @@
 #DATABASE
-DATABASE_URL=""
+DATABASE_URL="postgresql://docker:docker@localhost:5432/docker"
 DATABASE_URL_UNPOOLED=""
 
 # NEXT AUTH
