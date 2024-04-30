@@ -25,8 +25,8 @@ export const CardWrapper = ({
   showSocial,
 }: CardWrapperProps) => {
   return (
-    <div className="flex flex-col w-11/12 md:max-w-lg m-2 justify-center items-center">
-      <Card className="w-full m-2 justify-center items-center">
+    <div className="flex flex-col w-11/12 md:max-w-lg justify-center items-center">
+      <Card className="w-full justify-center items-center">
         <div className="w-full flex flex-col justify-center items-center">
           <div className=" w-full mx-auto flex flex-row items-center justify-end p-2">
             <ThemeSwitcher />
@@ -34,9 +34,8 @@ export const CardWrapper = ({
           <Image
             src="/LGE_Logo_HeritageRed_Grey_RGB.png"
             alt="Image"
-            width="155"
-            height="155"
-            className="mb-4"
+            width="135"
+            height="135"
           />
         </div>
         <CardHeader>

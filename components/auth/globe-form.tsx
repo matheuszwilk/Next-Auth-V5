@@ -434,7 +434,7 @@ export function GlobeLogin() {
             innovative solutions.
           </p>
         </motion.div>
-        <div className="flex flex-col items-center justify-center w-full h-5/6 mt-2 mb-12">
+        <div className="flex flex-col items-center justify-center w-full h-5/6">
           <World data={sampleArcs} globeConfig={globeConfig} key="world" />
           <motion.div
             initial={{
